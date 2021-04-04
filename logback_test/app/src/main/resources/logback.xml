@@ -1,0 +1,46 @@
+<configuration>
+
+  <!-- 標準出力用設定 -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+    <appender name="STDOUT2" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>
+        %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <!-- ファイル出力用設定 -->
+  <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 日毎にログファイルを切り替える -->
+      <fileNamePattern>log/log-%d{yyyy-MM-dd}.log</fileNamePattern>
+      <!-- 保持しておくログアーカイブファイルの最大数 -->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%date %level [%thread] %logger{10} [%file : %line] %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- ルートロガー -->
+  <root level="DEBUG">
+    <appender-ref ref="LOGFILE"/>
+  </root>
+
+  <logger name="logbacktest" level="ERROR"/>
+
+  <logger name="logbacktest.layerone.LogOne" level="WARN"/>
+
+  <logger name="logbacktest.layertwo.LogTwo" level="INFO" additivity="false">
+    <appender-ref ref="STDOUT2"/>
+  </logger>
+
+</configuration>
