@@ -1,8 +1,10 @@
 # Java お試し用 リポジトリ
 
-- sfl4j + logback: logbacktest
+- sfl4j + logback: logback_test
 
-- JMustache + Linux Permission: mustachetest
+- JMustache + Linux Permission: mustache_test
+
+- Powermock (JUnit4) ： powermock_testJ4 
 
 # Ubuntu に OpenJDK 15 を入れる
 
