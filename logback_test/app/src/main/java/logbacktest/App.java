@@ -15,10 +15,14 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
-        outputLog();
+        try {
+            outputLog();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
-    private static void outputLog() {
+    private static void outputLog() throws Exception {
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.trace("App Trace");
         logger.debug("App Debug");
